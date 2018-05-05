@@ -2,7 +2,8 @@ version: "2.3"
 
 services:
     influxdb:
-        image: influxdb:1.5.2-alpine
+        image: influxdb:1.5.2
+        image:
         volumes:
             - ./influxdb/var/lib:/var/lib/influxdb
             - ./influxdb/etc:/etc/influxdb
@@ -14,7 +15,7 @@ services:
             - 8086:8086
 
     grafana:
-        image: grafana/grafana:5.2.0
+        image: fg2it/grafana-armhf:v5.1.0
         volumes:
             - ./grafana/etc:/etc/grafana
             - ./grafana/var/lib:/var/lib/grafana
