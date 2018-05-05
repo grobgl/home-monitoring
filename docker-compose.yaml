@@ -3,7 +3,6 @@ version: "2.3"
 services:
     influxdb:
         image: influxdb:1.5.2
-        image:
         volumes:
             - ./influxdb/var/lib:/var/lib/influxdb
             - ./influxdb/etc:/etc/influxdb
