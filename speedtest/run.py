@@ -26,7 +26,7 @@ db = InfluxDBClient(
     password='root',
     database='speedtest')
 
-db.create_retention_policy('forever', 'INF')
+db.create_retention_policy('forever', 'INF', 1)
 
 schedule.every(5).minutes.do(run_threaded, job)
 
