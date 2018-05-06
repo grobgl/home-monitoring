@@ -1,27 +1,40 @@
-version: "2.3"
+version: "3.6"
+
+networks:
+  home-monitor-net:
+    driver: bridge
 
 services:
-    influxdb:
-        image: influxdb:1.5.2
-        volumes:
-            - ./influxdb/var/lib:/var/lib/influxdb
-            - ./influxdb/etc:/etc/influxdb
-        environment:
-            - INFLUXDB_ADMIN_USER=admin
-            - INFLUXDB_ADMIN_PASSWORD=admin
-        ports:
-            - 8083:8083
-            - 8086:8086
+  influxdb:
+    image: influxdb:1.5.2
+    volumes:
+      - ./influxdb/var/lib:/var/lib/influxdb
+      - ./influxdb/etc:/etc/influxdb
+    environment:
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    ports:
+      - 8083:8083
+      - 8086:8086
+    networks:
+      - home-monitor-net
 
-    grafana:
-        image: fg2it/grafana-armhf:v5.1.0
-        volumes:
-            - ./grafana/etc:/etc/grafana
-            - ./grafana/var/lib:/var/lib/grafana
-            - ./grafana/var/lib/plugins:/var/lib/grafana/plugins
-            - ./grafana/var/log:/var/log/grafana
-        links:
-            - influxdb:influxdb
-        ports:
-            - 3000:3000
+  grafana:
+    image: fg2it/grafana-armhf:v5.1.0
+    volumes:
+      - ./grafana/etc:/etc/grafana
+      - ./grafana/var/lib:/var/lib/grafana
+      - ./grafana/var/lib/plugins:/var/lib/grafana/plugins
+      - ./grafana/var/log:/var/log/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - home-monitor-net
+
+  speedtest:
+    image: speedtest:latest
+    networks:
+      - home-monitor-net
+    depends_on:
+      - influxdb
 
