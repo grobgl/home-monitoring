@@ -1,6 +1,7 @@
 import schedule
 import speedtest
 import time
+from influxdb import InfluxDBClient
 
 
 def job():
