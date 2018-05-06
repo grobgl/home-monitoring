@@ -11,8 +11,8 @@ services:
       - ./influxdb/var/lib:/var/lib/influxdb
       - ./influxdb/etc:/etc/influxdb
     environment:
-      - INFLUXDB_ADMIN_USER=admin
-      - INFLUXDB_ADMIN_PASSWORD=admin
+      - INFLUXDB_ADMIN_USER=root
+      - INFLUXDB_ADMIN_PASSWORD=root
     ports:
       - 8083:8083
       - 8086:8086
