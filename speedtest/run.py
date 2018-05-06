@@ -8,13 +8,16 @@ def job():
     s.get_best_server()
     s.download()
     s.upload()
-    print(s.results.dict())
+    res = s.results.dict()
+    res = { key: res[key] for key in ['download', 'upload', 'ping'] }
+    db.write(res)
 
 def run_threaded(job_func):
     job_thread = threading.Thread(target=job_func)
     job_thread.start()
 
 
+global db
 db = InfluxDBClient(
     host='influxdb',
     port=8086,
