@@ -19,12 +19,7 @@ def run_threaded(job_func):
 
 
 global db
-db = InfluxDBClient(
-    host='influxdb',
-    port=8086,
-    username='root',
-    password='root',
-    database='speedtest')
+db = InfluxDBClient(host='influxdb', port=8086, username='root', password='root', database='speedtest')
 
 db.create_retention_policy('forever', 'INF', 1)
 
