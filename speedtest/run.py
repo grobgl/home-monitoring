@@ -1,6 +1,7 @@
 import schedule
 import speedtest
 import time
+from threading import Thread
 from influxdb import InfluxDBClient
 
 
@@ -14,7 +15,7 @@ def job():
     db.write(res)
 
 def run_threaded(job_func):
-    job_thread = threading.Thread(target=job_func)
+    job_thread = Thread(target=job_func)
     job_thread.start()
 
 
