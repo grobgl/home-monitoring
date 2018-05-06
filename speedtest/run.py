@@ -12,7 +12,7 @@ def job():
     s.upload()
     res = s.results.dict()
     res = { key: res[key] for key in ['download', 'upload', 'ping'] }
-    db.write(res)
+    db.write([res])
 
 def run_threaded(job_func):
     job_thread = Thread(target=job_func)
