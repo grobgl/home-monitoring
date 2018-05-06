@@ -11,6 +11,7 @@ services:
       - ./influxdb/var/lib:/var/lib/influxdb
       - ./influxdb/etc:/etc/influxdb
     environment:
+      - INFLUXDB_DB=speedtest
       - INFLUXDB_ADMIN_USER=root
       - INFLUXDB_ADMIN_PASSWORD=root
     ports:
