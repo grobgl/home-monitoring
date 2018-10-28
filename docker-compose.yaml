@@ -24,7 +24,7 @@ services:
       - home-monitor-net
 
   grafana:
-    image: grafana/grafana:5.3.2
+    image: fg2it/grafana-armhf:v5.1.0
     volumes:
       - ./grafana/etc:/etc/grafana
       - ./grafana/var/lib:/var/lib/grafana
