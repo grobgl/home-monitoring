@@ -1,13 +1,12 @@
 version: "3.7"
 
-env_file: .env
-
 networks:
   home-monitor-net:
     driver: bridge
 
 services:
   influxdb:
+    env_file: .env
     image: influxdb:1.5.2
     volumes:
       - ./influxdb/var/lib:/var/lib/influxdb
@@ -25,7 +24,7 @@ services:
       - home-monitor-net
 
   grafana:
-    image: fg2it/grafana-armhf:v5.1.0
+    image: grafana/grafana:5.3.2
     volumes:
       - ./grafana/etc:/etc/grafana
       - ./grafana/var/lib:/var/lib/grafana
@@ -43,4 +42,7 @@ services:
       - home-monitor-net
     depends_on:
       - influxdb
-
+    env_file: .env
+    environment:
+      - LOG_LEVEL=INFO
+      - INTERVAL_MINS=5
