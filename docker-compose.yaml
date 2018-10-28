@@ -1,4 +1,4 @@
-version: "3.6"
+version: "3.7"
 
 networks:
   home-monitor-net:
@@ -35,7 +35,8 @@ services:
       - home-monitor-net
 
   speedtest:
-    image: speedtest:latest
+    build: 
+      context: ./speedtest
     networks:
       - home-monitor-net
     depends_on:
