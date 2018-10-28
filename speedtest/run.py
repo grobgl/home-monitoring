@@ -15,7 +15,7 @@ _LOGGER = logging.getLogger(__name__)
 _INFLUX_DB_USER = os.environ.get('INFLUXDB_USER')
 _INFLUX_DB_PASSWORD = os.environ.get('INFLUXDB_USER_PASSWORD')
 
-_SCHEDULE_INTERVAL_MINS = int(os.environ.get('INTERVAL_MINS')
+_SCHEDULE_INTERVAL_MINS = int(os.environ.get('INTERVAL_MINS'))
 
 
 def job():
