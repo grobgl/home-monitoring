@@ -2,6 +2,4 @@
 *.db
 *.log
 **/sessions/
-grafana/var/lib/plugins
-influxdb/var/lib/data/*
-influxdb/var/lib/wal
+influxdb/var/lib
