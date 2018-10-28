@@ -1,24 +1,12 @@
-# config file version
 apiVersion: 1
 
-# list of datasources to insert/update depending
-# whats available in the database
 datasources:
-  # <string, required> name of the datasource. Required
 - name: InfluxDB
-  # <string, required> datasource type. Required
   type: influxdb
-  # <string, required> access mode. direct or proxy. Required
-  access: server
-  # <string> url
   url: http://influxdb:8086
-  # <string> database user, if used
-  user: ${INFLUXDB_USER_PASSWORD}
-  # <string> database password, if used
-  password: ${INFLUXDB_USER}
-  # <string> database name, if used
+  access: proxy
+  user: dbuser
+  password: dbuser
   database: speedtest
-  # <bool> mark as default datasource. Max one per org
   isDefault: true
-  # <bool> allow users to edit datasources from the UI.
   editable: false
